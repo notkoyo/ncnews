@@ -1,10 +1,14 @@
-import ArticleCard from "./components/Article/ArticleCard";
-import ArticleOrganiser from "./components/Article/ArticleOrganiser";
+// import ArticleOrganiser from "./components/Article/ArticleOrganiser";
+import Navbar from "./components/Navbar/Navbar";
 
 export default function App() {
   return (
-    <div className="grid place-items-center h-screen">
-      <ArticleOrganiser />
-    </div>
+    <>
+      <Navbar />
+      <div className="grid place-items-center h-screen">
+      
+      </div>
+    </>
+    
   )
 }

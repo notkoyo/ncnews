@@ -1,20 +1,23 @@
 import ArticleCard from "./ArticleCard";
-import axios from "axios";
 import {useState, useEffect} from "react";
+import {getArticles} from "../../utils/APICalls";
 
 export default function ArticleOrganiser() {
   const [articleData, setArticleData] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await axios.get("https://nc-news-api-8ppx.onrender.com/api/articles");
-      const { articles } = data.data;
-      setArticleData(articles);
+    const fetchArticles = async () => {
+      const data = await getArticles();
+      setArticleData(data);
     };
-    getData();
+    fetchArticles();
   }, []);
 
-  return (<div className="flex flex-col">
-    {articleData.map((article) => <ArticleCard article={article} /> )}
-  </div>);
+  return (
+    <div className="flex flex-col">
+      {articleData.map((article) => (
+        <ArticleCard key={article.article_id} article={article} />
+      ))}
+    </div>
+  );
 }
