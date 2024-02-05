@@ -1,4 +1,5 @@
 import {Heart, MessageSquare} from "lucide-react";
+import dateFormat from "../../utils/dateFormat.js";
 
 export default function ArticleCard({article}) {
   const { author, topic, votes, title, comment_count, article_img_url, created_at } = article;
@@ -12,7 +13,7 @@ export default function ArticleCard({article}) {
           <figure>
             <img src={article_img_url} alt={`image for ${topic} article`} />
           </figure>
-          <figcaption className="opacity-40 ml-1">{created_at}</figcaption>
+          <figcaption className="opacity-40 ml-1">{dateFormat(created_at)}</figcaption>
           <div className="card-actions justify-start mt-1">
             <button className="btn btn-ghost p-2">
               <MessageSquare size={16} />

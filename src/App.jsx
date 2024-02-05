@@ -1,4 +1,3 @@
-import ArticleCard from "./components/Article/ArticleCard";
 import ArticleOrganiser from "./components/Article/ArticleOrganiser";
 
 export default function App() {
