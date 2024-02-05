@@ -6,7 +6,7 @@ export default function ArticleCard({article}) {
 
   return (
     <>
-      <div className="card card-compact w-96 bg-neutral shadow-xl my-3">
+      <div className="card card-compact w-96 bg-neutral shadow-xl m-3">
         <div className="card-body">
           <span className="font-small">{`${topic[0].toUpperCase()}${topic.slice(1)}`} - Posted by {author}</span>
           <h2 className="card-title mt-3 font-bold">{title}</h2>

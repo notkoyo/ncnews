@@ -10,3 +10,12 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.chevron-bounce {
+  margin: auto;
+  animation: hover-me .5s infinite ease-in-out alternate; 
+}
+
+@keyframes hover-me {
+  100% { transform: translate3d(0, 25px, 0); }
+}
