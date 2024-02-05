@@ -1,9 +1,9 @@
-function App() {
+import ArticleCard from "./components/Article/ArticleCard";
+
+export default function App() {
   return (
     <div className="grid place-items-center h-screen">
-      <h1 className="text-8xl font-bold underline">NC News</h1>
+      <ArticleCard />
     </div>
   )
 }
-
-export default App
