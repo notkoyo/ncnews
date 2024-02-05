@@ -11,6 +11,19 @@ html {
   scrollbar-width: none;
 }
 
+@layer utilities {
+  @variants responsive {
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  }
+} 
+
 .chevron-bounce {
   margin: auto;
   animation: hover-me .5s infinite ease-in-out alternate; 

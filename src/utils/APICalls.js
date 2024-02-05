@@ -12,4 +12,16 @@ const getTopics = async () => {
   return topics.map((topic) => topic.slug);
 }
 
-export { getArticles, getTopics };
+const getArticleById = async (id) => {
+  const data = await axios.get(`https://nc-news-api-8ppx.onrender.com/api/articles/${id}`);
+  const { article } = data.data;
+  return article;
+}
+
+const getCommentsById = async (id) => {
+  const data = await axios.get(`https://nc-news-api-8ppx.onrender.com/api/articles/${id}/comments`)
+  const { comments } = data.data;
+  return comments;
+}
+
+export { getArticles, getTopics, getArticleById, getCommentsById };
