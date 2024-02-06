@@ -1,7 +1,7 @@
 import ArticleOrganiser from "../Article/ArticleOrganiser";
 import { ChevronDown } from "lucide-react";
 
-export default function Hero() {
+export default function Hero({ isLoggedIn }) {
   return (
     <>
       <div
@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="text-center mt-20 mb-10">
         <h2 className="font-bold text-4xl">Recent Articles</h2>
       </div>
-      <ArticleOrganiser />
+      <ArticleOrganiser isLoggedIn={isLoggedIn} />
     </>
   );
 }

@@ -1,11 +1,10 @@
 import {Heart, MessageSquare} from "lucide-react";
 import dateFormat from "../../utils/dateFormat.js";
-import {useState} from "react";
-import {getArticleById, getCommentsById} from "../../utils/APICalls.js";
+import {useEffect, useState} from "react";
+import {getArticleById, getCommentsById, updateVotes} from "../../utils/APICalls.js";
 
 export default function ArticleCard({article}) {
-  const {author, topic, votes, title, comment_count, article_img_url, created_at, article_id} =
-    article;
+  const {author, topic, votes, title, comment_count, article_img_url, created_at, article_id} = article;
 
   return (
     <>
