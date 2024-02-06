@@ -1,17 +1,18 @@
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {useState} from "react";
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <>
-      <Navbar />
-      <Hero />
-      <BrowserRouter basename="/app">
-        <Routes>
-          <Route path="/" />
-        </Routes>
-      </BrowserRouter>
+      <header>
+        <Navbar setIsLoggedIn={setIsLoggedIn} />
+      </header>
+      <main>
+        <Hero isLoggedIn={isLoggedIn} />
+      </main>
     </>
     
   )
