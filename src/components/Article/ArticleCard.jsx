@@ -1,6 +1,6 @@
 import { Heart, MessageSquare } from "lucide-react";
 import dateFormat from "../../utils/dateFormat.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getArticleById, getCommentsById } from "../../utils/APICalls.js";
 import axios from "axios";
 
@@ -72,10 +72,9 @@ const ViewArticle = ({ id }) => {
   const [isModalClicked, setIsModalClicked] = useState(false);
   const [isCommentClicked, setIsCommentClicked] = useState(false);
   const [newComment, setNewComment] = useState("");
+  const [isCommentSubmit, setIsCommentSubmit] = useState(false);
 
-  const handleComment = () => {
-    
-  }
+  const username = localStorage.getItem("user");
 
   if (isModalClicked) {
     getArticleById(id).then((data) => setArticleData(data));
@@ -93,6 +92,26 @@ const ViewArticle = ({ id }) => {
     author,
     article_img_url,
   } = articleData;
+
+  const handleCommentSubmit = async (e) => {
+    if (newComment !== "") {
+      try {
+        e.preventDefault();
+        const response = await axios.post(
+          `https://nc-news-api-8ppx.onrender.com/api/articles/${id}/comments`,
+          {
+            body: newComment,
+            username: username,
+          }
+        );
+        setCommentData([...commentData, response.data.comment]);
+        setIsCommentSubmit((prevState) => !prevState);
+      } catch (error) {
+        console.error("Error posting comment:", error);
+      }
+    }
+    setNewComment("");
+  };
 
   return (
     <div className="card actions justify-end">
@@ -158,15 +177,22 @@ const ViewArticle = ({ id }) => {
                       <p className="text-left font-medium">{comment.body}</p>
                     </div>
                   ))}
-                  <form className="mt-3">
-                    <textarea
-                      placeholder="Enter a new comment..."
-                      value={newComment}
-                      onChange={(e) => setNewComment(e.target.value)}
-                      className="textarea textarea-bordered textarea-md w-full max-w-sm">
-                    </textarea>
-                    <button className="btn btn-ghost w-full mt-3" onSubmit={handleComment}>Submit</button>
-                  </form>
+                  {localStorage.getItem("auth") ? (
+                    <form
+                      onSubmit={(e) => handleCommentSubmit(e)}
+                      className="mt-3">
+                      <textarea
+                        placeholder="Enter a new comment..."
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                        className="textarea textarea-bordered textarea-md w-full max-w-sm"></textarea>
+                      <button
+                        className="btn btn-ghost w-full mt-3"
+                        type="submit">
+                        Submit
+                      </button>
+                    </form>
+                  ) : null}
                 </div>
               </div>
             </div>
