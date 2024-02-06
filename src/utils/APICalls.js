@@ -24,10 +24,4 @@ const getCommentsById = async (id) => {
   return comments;
 }
 
-const updateVotes = (id) => {
-  axios.patch(`https://nc-news-api-8ppx.onrender.com/api/articles/${id}`, {
-    votes: ++votes,
-  })
-} 
-
-export { getArticles, getTopics, getArticleById, getCommentsById, updateVotes };
+export { getArticles, getTopics, getArticleById, getCommentsById };
