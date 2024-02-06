@@ -54,9 +54,7 @@ export default function ArticleCard({ article }) {
               <MessageSquare size={16} />
               {comment_count} Comments
             </button>
-            <button
-              className="btn btn-ghost p-2"
-              onClick={handleVotes}>
+            <button className="btn btn-ghost p-2" onClick={handleVotes}>
               <Heart size={16} />
               {totalVotes} Likes
             </button>
@@ -73,6 +71,11 @@ const ViewArticle = ({ id }) => {
   const [commentData, setCommentData] = useState([]);
   const [isModalClicked, setIsModalClicked] = useState(false);
   const [isCommentClicked, setIsCommentClicked] = useState(false);
+  const [newComment, setNewComment] = useState("");
+
+  const handleComment = () => {
+    
+  }
 
   if (isModalClicked) {
     getArticleById(id).then((data) => setArticleData(data));
@@ -155,6 +158,15 @@ const ViewArticle = ({ id }) => {
                       <p className="text-left font-medium">{comment.body}</p>
                     </div>
                   ))}
+                  <form className="mt-3">
+                    <textarea
+                      placeholder="Enter a new comment..."
+                      value={newComment}
+                      onChange={(e) => setNewComment(e.target.value)}
+                      className="textarea textarea-bordered textarea-md w-full max-w-sm">
+                    </textarea>
+                    <button className="btn btn-ghost w-full mt-3" onSubmit={handleComment}>Submit</button>
+                  </form>
                 </div>
               </div>
             </div>
