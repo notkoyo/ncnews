@@ -16,7 +16,7 @@ export default function Navbar({ setIsLoggedIn }) {
       setTopics(data);
     };
     fetchTopics();
-  });
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("auth");
