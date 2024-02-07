@@ -1,4 +1,4 @@
-import { Heart, MessageSquare } from "lucide-react";
+import { Heart, MessageSquare, Trash } from "lucide-react";
 import dateFormat from "../../utils/dateFormat.js";
 import { useState } from "react";
 import { getArticleById, getCommentsById } from "../../utils/APICalls.js";
@@ -112,6 +112,11 @@ const ViewArticle = ({ id }) => {
     setNewComment("");
   };
 
+  const handleCommentDelete = (commentID) => {
+    const updatedComments = commentData.filter(comment => comment.comment_id !== commentID);
+    setCommentData(updatedComments);
+  }
+
   return (
     <div className="card actions justify-end">
       <button
@@ -174,6 +179,21 @@ const ViewArticle = ({ id }) => {
                         </button>
                       </div>
                       <p className="text-left font-medium">{comment.body}</p>
+                      {auth && comment.author === username ? (
+                        <div className="flex justify-end pt-1">
+                          <button
+                            className="btn-sm btn-circle btn-ghost"
+                            onClick={() => {
+                              axios.delete(
+                                `https://nc-news-api-8ppx.onrender.com/api/comments/${comment.comment_id}`
+                              )
+                              .then(() => handleCommentDelete(comment.comment_id))
+                              .catch((err) => console.error(err));
+                            }}>
+                            <Trash size={16} color="red" className="mx-auto" />
+                          </button>
+                        </div>
+                      ) : null}
                     </div>
                   ))}
                   {localStorage.getItem("auth") ? (
