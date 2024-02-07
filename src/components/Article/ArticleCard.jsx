@@ -1,6 +1,6 @@
 import { Heart, MessageSquare } from "lucide-react";
 import dateFormat from "../../utils/dateFormat.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getArticleById, getCommentsById } from "../../utils/APICalls.js";
 import axios from "axios";
 
@@ -72,9 +72,9 @@ const ViewArticle = ({ id }) => {
   const [isModalClicked, setIsModalClicked] = useState(false);
   const [isCommentClicked, setIsCommentClicked] = useState(false);
   const [newComment, setNewComment] = useState("");
-  const [isCommentSubmit, setIsCommentSubmit] = useState(false);
 
   const username = localStorage.getItem("user");
+  const auth = localStorage.getItem("auth");
 
   if (isModalClicked) {
     getArticleById(id).then((data) => setArticleData(data));
@@ -105,7 +105,6 @@ const ViewArticle = ({ id }) => {
           }
         );
         setCommentData([...commentData, response.data.comment]);
-        setIsCommentSubmit((prevState) => !prevState);
       } catch (error) {
         console.error("Error posting comment:", error);
       }
