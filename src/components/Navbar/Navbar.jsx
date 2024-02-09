@@ -21,6 +21,7 @@ export default function Navbar({ setIsLoggedIn }) {
   const handleLogout = () => {
     localStorage.removeItem("auth");
     localStorage.removeItem("user");
+    setIsLoggedIn(false);
   };
 
   return (
@@ -42,15 +43,23 @@ export default function Navbar({ setIsLoggedIn }) {
             <li>
               <details>
                 <summary>Topics</summary>
-                <ul className="p-2 bg-base-300 rounded-t-none">
-                  {topics.map((topic, i) => (
-                    <li key={i}>
-                      <a href="#">{`${topic[0].toUpperCase()}${topic.slice(
-                        1
-                      )}`}</a>
+                {topics ? (
+                  <ul className="p-2 bg-base-300 rounded-t-none">
+                    {topics.map((topic, i) => (
+                      <li key={i}>
+                        <a href="#">{`${topic[0].toUpperCase()}${topic.slice(
+                          1
+                        )}`}</a>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <ul className="p-2 bg-base-300 rounded-t-none">
+                    <li className="mx-5">
+                      <span className="loading loading-dots loading-md"></span>
                     </li>
-                  ))}
-                </ul>
+                  </ul>
+                )}
               </details>
             </li>
           </ul>
@@ -95,7 +104,10 @@ export default function Navbar({ setIsLoggedIn }) {
               className="btn btn-ghost btn-circle avatar">
               {auth ? (
                 <div className="w-10 rounded-full">
-                  <img src={localStorage.getItem("avatar")} alt="profile image" />
+                  <img
+                    src={localStorage.getItem("avatar")}
+                    alt="profile image"
+                  />
                 </div>
               ) : (
                 <div className="w-10 rounded-full bg-base-100"></div>
