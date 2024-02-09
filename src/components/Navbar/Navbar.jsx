@@ -47,9 +47,9 @@ export default function Navbar({ setIsLoggedIn }) {
                   <ul className="p-2 bg-base-300 rounded-t-none">
                     {topics.map((topic, i) => (
                       <li key={i}>
-                        <a href="#">{`${topic[0].toUpperCase()}${topic.slice(
-                          1
-                        )}`}</a>
+                        <Link to={`topic/${topic}`}>
+                          {`${topic[0].toUpperCase()}${topic.slice(1)}`}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -87,9 +87,9 @@ export default function Navbar({ setIsLoggedIn }) {
                   <ul className="p-2 bg-base-300 rounded-t-none">
                     {topics.map((topic, i) => (
                       <li key={i}>
-                        <a href="#">{`${topic[0].toUpperCase()}${topic.slice(
-                          1
-                        )}`}</a>
+                        <Link to={`topic/${topic}`}>
+                          {`${topic[0].toUpperCase()}${topic.slice(1)}`}
+                        </Link>
                       </li>
                     ))}
                   </ul>
