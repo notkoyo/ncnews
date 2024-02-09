@@ -6,7 +6,7 @@ The hosted version of the site can be accessed at [https://ncnews-notkoyo.netlif
 
 ## Project Summary
 
-This project aims to build the front end for my [back-end API](https://github.com/notkoyo/ncnews-api) that serves the data in a more meaningful way. The project is built with React, Tailwind and DaisyUI.
+This project aims to build the front end for my [back-end API](https://github.com/notkoyo/ncnews-api) that serves the data in a more meaningful way. The project is built with [React](https://react.dev), [Tailwind](https://tailwindcss.com) and [DaisyUI](https://daisyui.com).
 
 To use the app, login with a pre-existing user (*jessjelly*) using the login page from the avatar dropdown in the top right.
 This enables you to post comments and delete comments previously left.
