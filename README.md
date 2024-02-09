@@ -15,7 +15,7 @@ This enables you to post comments and delete comments previously left.
 
 This project requires Node.js version **20.8.0** or later. You can check your version by running `node --version` in your terminal.
 
-## Local Setup instructions
+## Local Setup Instructions
 
 #### Clone the repository:
 ```Bash
