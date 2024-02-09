@@ -34,4 +34,4 @@ npm run dev
 ```
 
 #### Access your app:
-The app will typically be running on a local port (e.g., http://localhost:3000). Open the specified URL in your browser to launch the app.
+The app will typically be running on a local port (e.g., http://localhost:5173). Open the specified URL in your browser to launch the app.
