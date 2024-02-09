@@ -1,14 +1,16 @@
-import ArticleCard from "./ArticleCard";
 import {useState, useEffect} from "react";
-import {getArticles} from "../../utils/APICalls";
+import {getArticlesByTopic} from "../../utils/APICalls";
+import ArticleCard from "../Article/ArticleCard";
 
-export default function ArticleOrganiser() {
+export default function TopicOrganiser({topic}) {
   const [articleData, setArticleData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const apiTopic = topic.toLowerCase();
+
   useEffect(() => {
     const fetchArticles = async () => {
-      const data = await getArticles();
+      const data = await getArticlesByTopic(apiTopic);
       setArticleData(data);
       setIsLoading(false);
     };
@@ -19,7 +21,7 @@ export default function ArticleOrganiser() {
     return (
       <div className="flex justify-center items-center h-48">
         <span className="loading loading-spinner loading-lg"></span>
-        <h3 className="font-bold ml-5">Loading Articles...</h3>
+        <h3 className="font-bold ml-5">Loading {topic} Articles...</h3>
       </div>
     )
   }
